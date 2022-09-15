@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>lombok-mapstruct-maven-test</artifactId>
+    <groupId>org.ling5821</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>item</artifactId>
+
+  <dependencies>
+
+
+
+    <!-- 第二种方式 可以子模块引入，也可以直接在父模块全局引入 -->
+    <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct</artifactId>
+      <version>${org.mapstruct.version}</version>
+    </dependency>
+
+    <!-- 第二种方式 子项目中引入 mapstruct-processor 会影响父项目中l ombok -> mapstruct-processor 的引入顺序 -->
+    <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct-processor</artifactId>
+      <version>${org.mapstruct.version}</version>
+    </dependency>
+
+    <!-- 第二种方式 子项目中引入 lombok 也不会影响父项目中 lombok -> mapstruct-processor 的引入顺序 -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.22</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+</project>

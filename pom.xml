@@ -6,7 +6,11 @@
 
     <groupId>org.ling5821</groupId>
     <artifactId>lombok-mapstruct-maven-test</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>item</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -18,13 +22,9 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-            <version>${org.mapstruct.version}</version>
-        </dependency>
 
-        <!-- lombok dependencies should not end up on classpath -->
+        <!-- 第二种方式 全局引入 lombok 和 mapstruct-processor 并且保证 !!!! lombok 依赖 在 mapstruct-processor 前 !!!!
+            至于 mapstruct 也可以全局引入 但不必要，用到再引入也可以  -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -32,12 +32,11 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- 添加这个的情况下不引入build -->
-        <!--<dependency>
+        <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
             <version>${org.mapstruct.version}</version>
-        </dependency>-->
+        </dependency>
     </dependencies>
 
 <!--   添加BUILD的情况下不引入mapstruct-processor -->
@@ -51,24 +50,26 @@
                     <configuration>
                         <source>1.8</source>
                         <target>1.8</target>
-                        <annotationProcessorPaths>
-                            <path>
-                                <groupId>org.mapstruct</groupId>
-                                <artifactId>mapstruct-processor</artifactId>
-                                <version>${org.mapstruct.version}</version>
-                            </path>
-                            <path>
-                                <groupId>org.projectlombok</groupId>
-                                <artifactId>lombok</artifactId>
-                                <version>${org.projectlombok.version}</version>
-                            </path>
+                        <!-- 第一种方式 添加 annotationProcessorPaths 此种存在的弊端 因为 annotationProcessorPaths 添加后，只会读取指定的 path 下的 annotationProcessor
+                        导致通过 META-INF/services/javax.annotation.processing.Processor 指定的 annotationProcessor 无法生效, 所以需要明确配置所有用到的 annotationProcessor -->
+<!--                        <annotationProcessorPaths>-->
+<!--                            <path>-->
+<!--                                <groupId>org.projectlombok</groupId>-->
+<!--                                <artifactId>lombok</artifactId>-->
+<!--                                <version>${org.projectlombok.version}</version>-->
+<!--                            </path>-->
+<!--                            <path>-->
+<!--                                <groupId>org.mapstruct</groupId>-->
+<!--                                <artifactId>mapstruct-processor</artifactId>-->
+<!--                                <version>${org.mapstruct.version}</version>-->
+<!--                            </path>-->
                             <!-- 不加会出现属性不存在的报错 -->
-                            <path>
-                                <groupId>org.projectlombok</groupId>
-                                <artifactId>lombok-mapstruct-binding</artifactId>
-                                <version>${lombok-mapstruct-binding.version}</version>
-                            </path>
-                        </annotationProcessorPaths>
+<!--                            <path>-->
+<!--                                <groupId>org.projectlombok</groupId>-->
+<!--                                <artifactId>lombok-mapstruct-binding</artifactId>-->
+<!--                                <version>${lombok-mapstruct-binding.version}</version>-->
+<!--                            </path>-->
+<!--                        </annotationProcessorPaths>-->
                     </configuration>
                 </plugin>
             </plugins>
