@@ -1,8 +1,8 @@
-package com.ling5821;
+package com.ling5821.mapstruct;
 
+import com.ling5821.dto.AppleDTO;
+import com.ling5821.entity.Apple;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -13,7 +13,5 @@ import org.mapstruct.factory.Mappers;
 public interface AppleMapper {
     AppleMapper INSTANCE = Mappers.getMapper(AppleMapper.class);
 
-    @Mapping(source = "ossUrl", target = "url")
-    @Mapping(source = "age", target = "agex")
     AppleDTO toAppleDTO(Apple apple);
 }

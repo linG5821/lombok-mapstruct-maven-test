@@ -1,4 +1,4 @@
-package com.ling5821;
+package com.ling5821.entity;
 
 import lombok.Data;
 
@@ -8,6 +8,6 @@ import lombok.Data;
  */
 @Data
 public class Apple {
-    private String ossUrl;
-    private Integer age;
+    private String url;
+    private String color;
 }
