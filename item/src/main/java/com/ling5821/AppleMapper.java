@@ -12,8 +12,8 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface AppleMapper {
     AppleMapper INSTANCE = Mappers.getMapper(AppleMapper.class);
-    @Mappings({
-        @Mapping(source = "ossUrl", target = "url")
-    })
+
+    @Mapping(source = "ossUrl", target = "url")
+    @Mapping(source = "age", target = "agex")
     AppleDTO toAppleDTO(Apple apple);
 }

@@ -13,8 +13,6 @@
 
   <dependencies>
 
-
-
     <!-- 第二种方式 可以子模块引入，也可以直接在父模块全局引入 -->
     <dependency>
       <groupId>org.mapstruct</groupId>
@@ -22,19 +20,18 @@
       <version>${org.mapstruct.version}</version>
     </dependency>
 
-    <!-- 第二种方式 子项目中引入 mapstruct-processor 会影响父项目中l ombok -> mapstruct-processor 的引入顺序 -->
-    <dependency>
-      <groupId>org.mapstruct</groupId>
-      <artifactId>mapstruct-processor</artifactId>
-      <version>${org.mapstruct.version}</version>
-    </dependency>
+<!--    &lt;!&ndash; 第二种方式 子项目中引入 mapstruct-processor 会影响父项目中lombok -> mapstruct-processor 的引入顺序 &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.mapstruct</groupId>-->
+<!--      <artifactId>mapstruct-processor</artifactId>-->
+<!--      <version>${org.mapstruct.version}</version>-->
+<!--    </dependency>-->
 
     <!-- 第二种方式 子项目中引入 lombok 也不会影响父项目中 lombok -> mapstruct-processor 的引入顺序 -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.22</version>
-      <scope>provided</scope>
+      <version>${org.projectlombok.version}</version>
     </dependency>
   </dependencies>
 

@@ -9,4 +9,5 @@ import lombok.Data;
 @Data
 public class Apple {
     private String ossUrl;
+    private Integer age;
 }

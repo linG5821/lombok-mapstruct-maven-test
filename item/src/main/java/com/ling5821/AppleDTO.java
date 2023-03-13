@@ -9,4 +9,5 @@ import lombok.Data;
 @Data
 public class AppleDTO {
     private String url;
+    private Integer agex;
 }
